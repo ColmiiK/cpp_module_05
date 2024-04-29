@@ -6,28 +6,14 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:06:25 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/04/29 11:57:38 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:01:29 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Bureaucrat.hpp>
 
 /*
-
-private:
-const std::string _name;
-int _grade;
-public:
-// Constructors
-Bureaucrat( void );
-Bureaucrat( std::string name, int grade );
-Bureaucrat( const Bureaucrat& source );
-// Destructor
-~Bureaucrat( void );
-// Overloaded operators
-Bureaucrat& operator=( const Bureaucrat& source );
-
-// TODO: Overload <<
+TODO: Overload <<
 */
 
 Bureaucrat::Bureaucrat( void ) : _name("null"), _grade(150) {
@@ -51,21 +37,28 @@ Bureaucrat& Bureaucrat::operator=( const Bureaucrat &source ) {
 	std::cout << "Copy assigment operator called" << std::endl;
 	_grade = source._grade;
 	std::cout << "Unable to copy _name (const)" << std::endl;
+	return (*this);
+}
+
+std::ostream& operator<<(std::ostream &os, const Bureaucrat &source ) {
+	os << source.getName();
+	return (os);
 }
 
 Bureaucrat::~Bureaucrat( void ) {
 	std::cout << "Destructor called" << std::endl;
 }
 
-std::string Bureaucrat::getName( void ) {
+std::string Bureaucrat::getName( void ) const {
 	return (this->_name);
 }
 
-int Bureaucrat::getGrade( void ) {
+int Bureaucrat::getGrade( void ) const {
 	return (this->_grade);
 }
 
-void Bureaucrat::setGrade( int grade ) : _grade( grade ) {
+void Bureaucrat::setGrade( int grade ) {
+	this->_grade = grade;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
@@ -86,10 +79,10 @@ void Bureaucrat::decrementGrade( void ) {
 		throw Bureaucrat::GradeTooLowException();
 }
 
-const std::string Bureaucrat::GradeTooHighException( void ) {
+const char *Bureaucrat::GradeTooHighException::what( void ) const throw(){
 	return("Grade is too high");
 }
 
-const std::string Bureaucrat::GradeTooLowException( void ) {
+const char *Bureaucrat::GradeTooLowException::what( void ) const throw(){
 	return("Grade is too low");
 }

@@ -6,7 +6,7 @@
 /*   By: alvega-g <alvega-g@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:06:34 by alvega-g          #+#    #+#             */
-/*   Updated: 2024/04/29 11:58:23 by alvega-g         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:01:49 by alvega-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,26 @@ class Bureaucrat {
 		~Bureaucrat( void );
 		// Overloaded operators
 		Bureaucrat& operator=( const Bureaucrat& source );
-		
-		// TODO: Overload <<
-		
 		// Getters
-		std::string getName( void );
-		int getGrade( void );
-
+		std::string getName( void ) const;
+		int getGrade( void ) const;
 		// Setter
 		void setGrade( int grade );
-		
 		// Other functions
 		void incrementGrade( void );
 		void decrementGrade( void );
-
-		// Execptions
-		const std::string GradeTooHighException( void );
-		const std::string GradeTooLowException( void );
+		// Exceptions
+		class GradeTooHighException: public std::exception {
+			public:
+				virtual const char *what( void ) const throw();
+		};
+		class GradeTooLowException: public std::exception {
+			public:
+				virtual const char *what( void ) const throw();
+		};
+		
 };
+
+std::ostream& operator<<(std::ostream &os, const Bureaucrat &source );
 
 #endif
