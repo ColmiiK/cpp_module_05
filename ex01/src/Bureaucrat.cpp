@@ -31,7 +31,7 @@ std::ostream& operator<<(std::ostream & os, Bureaucrat const & obj) {
 std::string const & Bureaucrat::getName() const {return _name;}
 int const & Bureaucrat::getGrade() const {return _grade;}
 
-void Bureaucrat::signForm(Form obj) {
+void Bureaucrat::signForm(Form & obj) {
     obj.beSigned(*this);
     if (obj.getSigned() == true)
         std::cout << _name << " signed " << obj.getName() << std::endl;

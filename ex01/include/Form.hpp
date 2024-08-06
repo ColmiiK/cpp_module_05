@@ -7,12 +7,12 @@ class Bureaucrat;
 
 class Form {
     private:
-        Form();
         std::string const _name;
         bool _signed;
         int const _requiredGrade;
         int const _executeGrade;
     public:
+        Form();
         Form(std::string name, int required, int execute);
         ~Form();
         Form(Form const & obj);
@@ -23,7 +23,7 @@ class Form {
         int const & getRequiredGrade() const;
         int const & getExecuteGrade() const;
         
-        void beSigned(Bureaucrat obj);
+        void beSigned(Bureaucrat & obj);
         void checkGrade(int grade);
 
         class GradeTooHighException : public std::exception {
