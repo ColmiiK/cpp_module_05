@@ -17,4 +17,14 @@ class Bureaucrat {
         void incrementGrade();
         void decrementGrade();
 
+		class GradeTooHighException : public std::exception {
+			public:
+				const char* what() const throw() {return "Error: Grade is too high.";};
+		};
+		class GradeTooLowException : public std::exception {
+			public:
+				const char* what() const throw() {return "Error: Grade is too low.";};
+		};
 };
+
+std::ostream& operator<<(std::ostream & os, Bureaucrat const & obj);
