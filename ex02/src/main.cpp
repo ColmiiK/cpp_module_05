@@ -1,7 +1,10 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
-
+#include "ShrubberyCreationForm.hpp"
 
 int main() {
-    AForm one("One", 200, 50);
+    ShrubberyCreationForm one("TEST");
+    Bureaucrat alpha("Alpha", 1);
+    one.execute(alpha);
+
 }

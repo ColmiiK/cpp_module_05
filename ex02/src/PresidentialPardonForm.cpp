@@ -1,4 +1,4 @@
-#include "PresidentialPardonForm.cpp"
+#include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm() : _name("null"), _requiredGrade(25), _executeGrade(5){}
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : _name(target), _requiredGrade(25), _executeGrade(5){}

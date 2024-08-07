@@ -48,6 +48,18 @@ void AForm::checkGrade(int grade) {
         throw AForm::GradeTooHighException();
 }
 
+void AForm::execute(Bureaucrat const & executor) const {
+    try {
+        if (this->getSigned() == 0)
+            throw "Form is not signed.";
+        if (executor.getGrade() > this->getExecuteGrade())
+            throw "Bureaucrat's grade is not high enough to execute form.";
+        executeForm();
+    }
+    catch (char* e){
+        std::cout << "Exception: " << e << std::endl;
+    }
+}
 
 std::ostream& operator<<(std::ostream & os, AForm const & obj) {
     os << "AForm " << obj.getName() << ", required grade to be signed is " << obj.getRequiredGrade() << ", required grade to be executed is " << obj.getExecuteGrade() << ". Signed currently? ";

@@ -22,8 +22,7 @@ WHITE = $(shell tput setaf 7)
 
 #Sources
 	
-SRC_FILES = main Bureaucrat AForm PresidentialPardonForm ShrubberyCreationForm RobotomyRequestForm
-
+SRC_FILES = main Bureaucrat AForm ShrubberyCreationForm 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 OBJF = .cache_exists

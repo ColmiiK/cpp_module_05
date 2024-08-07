@@ -23,9 +23,10 @@ class AForm {
         int const & getRequiredGrade() const;
         int const & getExecuteGrade() const;
         
-        virtual void beSigned(Bureaucrat & obj) = 0;
+        void beSigned(Bureaucrat & obj);
         void checkGrade(int grade);
-
+        void execute(Bureaucrat const & executor) const;
+        virtual void executeForm() const = 0;
         class GradeTooHighException : public std::exception {
             public:
                 const char* what() const throw() {return "Error: grade is too high.";}
