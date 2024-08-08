@@ -32,15 +32,19 @@ AForm* Intern::makeForm(std::string name, std::string target){
         "RobotomyRequestForm",
         "PresidentialPardonForm",
     };
-    for (int i = 0; i < 3; i++) {
-        if (name == forms[i]) {
-            temp = (ptr_makeForm[i])(target);
+    try {
+        for (int i = 0; i < 3; i++) {
+            if (name == forms[i]) {
+                temp = (ptr_makeForm[i])(target);
+            }
         }
+        if (!temp)
+            throw "Error: couldn't find form";
     }
-    if (temp) {
-        std::cout << "Intern creates " << name << " with target " << target << std::endl;
+    catch (char const* e) {
+        std::cout << e << std::endl;
         return temp;
     }
-    std::cout << "Error: couldn't create form " << name << std::endl;
+    std::cout << "Intern creates " << name << " with target " << target << std::endl;
     return temp;
 }
