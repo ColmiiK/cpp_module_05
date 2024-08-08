@@ -1,10 +1,26 @@
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main() {
-    ShrubberyCreationForm one("TEST");
-    Bureaucrat alpha("Alpha", 1);
-    one.execute(alpha);
+    {
+        ShrubberyCreationForm one("Goodsprings");
+        Bureaucrat victor("Victor", 100);
+        victor.signAForm(one);
+        victor.executeForm(one);
+    }
+    {
+        RobotomyRequestForm one("Courier");
+        Bureaucrat moebius("Dr. Moebius", 5);
+        moebius.signAForm(one);
+        moebius.executeForm(one);
+    }
+    {
+        PresidentialPardonForm one("Caesar");
+        Bureaucrat house("Mr. House", 5);
+        house.signAForm(one);
+        house.executeForm(one);
+    }
 
 }

@@ -39,6 +39,10 @@ void Bureaucrat::signAForm(AForm & obj) {
         std::cout << _name << " couldn't sign " << obj.getName() << " because grade was too low." << std::endl;
 }
 
+void Bureaucrat::executeForm(AForm const & form) const {
+    form.execute(*this);
+}
+
 void Bureaucrat::incrementGrade(){
     try {
         if (_grade == 1)

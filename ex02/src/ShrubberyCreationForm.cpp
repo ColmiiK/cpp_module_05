@@ -1,13 +1,10 @@
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(){}
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
-
-}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {}
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & obj){
     *this = obj;
-    
 }
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm const & obj){
     if (this == &obj)
@@ -15,18 +12,18 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm co
     return *this;
 }
 
-void ShrubberyCreationForm::executeForm() const {
-    std::ofstream file;
-    file.open(std::string(this->getName() + std::string("_shrubbery")).c_str());
-    file << "               ,@@@@@@@,\
-       ,,,.   ,@@@@@@/@@,  .oo8888o.\
-    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\
-   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\
-   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\
-   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\
-   `&%\\ ` /%&'    |.|        \\ '|8'\
-       |o|        | |         | |\
-       |.|        | |         | |\
-jgs \\/ ._\\/\\/_/__/  ,\\_/\\/__\\/.  \\_/\\/__/_";
-    file.close();
+void ShrubberyCreationForm::runForm() const {
+        std::ofstream file;
+        file.open(std::string(this->_target + std::string("_shrubbery")).c_str());
+        file << "           ,@@@@@@@," << std::endl;
+        file << "   ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
+        file << ",&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << std::endl;
+        file << ",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
+        file << "%&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl;
+        file << "%&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'" << std::endl;
+        file << "`&%\\ ` /%&'    |.|        \\ '|8'" << std::endl;
+        file << "    |o|        | |         | |" << std::endl;
+        file << "    |.|        | |         | |" << std::endl;
+        file << "  \\/ ._\\//_/__/  ,\\_/\\/__\\/.  \\_/\\/__/_" << std::endl;
+        file.close();
 }
