@@ -64,6 +64,7 @@ void AForm::execute(Bureaucrat const & executor) const {
         if (executor.getGrade() > this->getExecuteGrade())
             throw "Bureaucrat's grade is not high enough to execute form.";
         runForm();
+        std::cout << executor.getName() << " executed " << _name << std::endl;
     }
     catch (char const* e){
         std::cout << "Exception: " << e << std::endl;
